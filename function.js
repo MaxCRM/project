@@ -14,7 +14,8 @@ window.function = async function (inputs) {
     return null;
   }
 
-  const result = input_number_value * 2;
+  // Здесь мы вычисляем квадрат числа вместо умножения на 2
+  const result = input_number_value * input_number_value;
   console.log("Calculated result:", result);
   return result;
 };
