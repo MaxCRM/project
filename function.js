@@ -1,31 +1,20 @@
-window.function = async function (inputs) {
-  // Добавляем логи, чтобы видеть, что происходит
-  console.log("Function called.");
-  console.log("Received inputs:", inputs);
+// The function here takes the parameters that you
+// have declared in the `glide.json` file, in the
+// same order.
+window.function = function (str, start, end) {
+  // For each parameter, its `.value` contains
+  // either its value in the type you've declared,
+  // or it's `undefined`.  This is a good place to
+  // extract the `.value`s and assign default
+  // values.
+  str = str.value ?? "";
+  start = start.value ?? 0;
+  end = end.value;
 
-  // Проверяем, какой тип данных пришел.
-  // Glide может передать либо объект с полем input_number, либо просто число.
-  let input_number_value;
-
-  if (typeof inputs === 'object' && inputs !== null && 'input_number' in inputs) {
-    // Если Glide передал объект, берем значение из поля input_number
-    input_number_value = parseFloat(inputs.input_number);
-    console.log("Input is an object. Parsed value:", input_number_value);
-  } else {
-    // Если Glide передал просто число, используем его напрямую
-    input_number_value = parseFloat(inputs);
-    console.log("Input is a number. Parsed value:", input_number_value);
-  }
-
-  // Проверка на NaN (Not a Number)
-  if (isNaN(input_number_value)) {
-    console.error("Input is not a valid number:", inputs);
-    return null;
-  }
-
-  // Основная логика: возведение в квадрат
-  const result = input_number_value * input_number_value;
-  console.log("Calculated result:", result);
-
-  return result;
-};
+  // Your function should return the exact type
+  // you've declared for the `result` in
+  // `glide.json`, or `undefined` if there's an
+  // error or no result can be produced, because a
+  // required input is `undefined`, for example.
+  return str.substring(start, end);
+}
