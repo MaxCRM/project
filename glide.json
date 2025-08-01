@@ -1,0 +1,16 @@
+{
+  "kind": "column",
+  "name": "Multiplier",
+  "description": "Multiplies a number by two.",
+  "author": "Your Name",
+  "params": [
+    {
+      "name": "input_number",
+      "displayName": "Input Number",
+      "type": "number"
+    }
+  ],
+  "result": {
+    "type": "number"
+  }
+}
